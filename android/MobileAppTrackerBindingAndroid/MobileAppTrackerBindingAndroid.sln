@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileAppTrackerBindingAndroid", "MobileAppTrackerBindingAndroid\MobileAppTrackerBindingAndroid.csproj", "{491AC801-E4C5-46B0-B5E3-57D81EE3A48D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{53C6EB2D-1355-41A3-9075-57934A098E0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{491AC801-E4C5-46B0-B5E3-57D81EE3A48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491AC801-E4C5-46B0-B5E3-57D81EE3A48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491AC801-E4C5-46B0-B5E3-57D81EE3A48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491AC801-E4C5-46B0-B5E3-57D81EE3A48D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C6EB2D-1355-41A3-9075-57934A098E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C6EB2D-1355-41A3-9075-57934A098E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C6EB2D-1355-41A3-9075-57934A098E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C6EB2D-1355-41A3-9075-57934A098E0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = MobileAppTrackerBindingAndroid\MobileAppTrackerBindingAndroid.csproj
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+<metadata>
+	<!--
+	This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+	<remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+
+	This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+	<remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+	-->
+	
+	<!-- Rename namespace from "com.mobileapptracker" to "HasOffers" so that it won't clash with the class name "MobileAppTracker" -->
+	<attr path="/api/package[@name='com.mobileapptracker']" name="managedName">HasOffers</attr>
+
+</metadata>
