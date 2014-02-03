@@ -8,9 +8,9 @@ namespace MATTest
 {
 	public partial class MATTestViewController : UIViewController
 	{
-		private const string MAT_ADVERTISER_ID = "your_mat_advertiser_id";
-		private const string MAT_CONVERSION_KEY = "your_mat_conversion_key";
-		private const string MAT_PACKAGE_NAME = "your_mat_package_name";
+		private const string MAT_ADVERTISER_ID = "877";
+		private const string MAT_CONVERSION_KEY = "8c14d6bbe466b65211e781d62e301eec";
+		private const string MAT_PACKAGE_NAME = "com.hasoffers.xamarinsample";
 
 		private bool isDebugEnabled = false;
 		private bool isAllowDuplicatesEnabled = false;
@@ -116,6 +116,9 @@ namespace MATTest
 				mat.SetMATConversionKey("tempMATConvKey");
 				mat.SetAppleAdvertisingIdentifier(new NSUuid("12345678-1234-1234-1234-123456789012"));
 				mat.SetAppleVendorIdentifier(new NSUuid("12345678-1234-1234-1234-123456789012"));
+				mat.SetFacebookUserId("tempFacebookId");
+				mat.SetGoogleUserId("tempGoogleId");
+				mat.SetTwitterUserId("tempTwitterId");
 
 				Console.WriteLine("MAT SDK Data Params after calling setters = " + mat.SdkDataParameters.ToString());
 			};

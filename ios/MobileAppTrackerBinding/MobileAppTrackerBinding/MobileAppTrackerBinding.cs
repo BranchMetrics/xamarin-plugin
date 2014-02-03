@@ -82,6 +82,15 @@ namespace MobileAppTrackerBinding
 		[Export ("setUserId:")]
 		void SetUserId (string userId);
 
+		[Export ("setFacebookUserId:")]
+		void SetFacebookUserId (string facebookUserId);
+
+		[Export ("setTwitterUserId:")]
+		void SetTwitterUserId (string twitterUserId);
+
+		[Export ("setGoogleUserId:")]
+		void SetGoogleUserId (string googleUserId);
+
 		[Export ("setUIID:")]
 		void SetUIID(string uiid);
 

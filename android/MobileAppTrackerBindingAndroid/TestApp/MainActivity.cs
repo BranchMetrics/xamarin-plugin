@@ -122,10 +122,13 @@ namespace TestApp
 				mat.Longitude = 12.3;
 				mat.Altitude = 123.4;
 				mat.AdvertiserId = "5432";
-				mat.Key = "12345678901234567890123456789012";
 				mat.Gender = MobileAppTracker.GenderFemale;
 				mat.CurrencyCode = "RUB";
 				mat.Age = 23;
+
+				mat.SetFacebookUserId("tempFacebookId");
+				mat.SetGoogleUserId("tempGoogleId");
+				mat.SetTwitterUserId("tempTwitterId");
 
 				String matData = "\nPackageName = " + mat.PackageName
 								+ "\nSiteId = " + mat.SiteId
@@ -136,7 +139,6 @@ namespace TestApp
 								+ "\nLongitude = " + mat.Longitude
 								+ "\nAltitude = " + mat.Altitude
 								+ "\nAdvertiserId = " + mat.AdvertiserId
-								+ "\nKey = " + mat.Key
 								+ "\nGender = " + mat.Gender
 								+ "\nCurrencyCode = " + mat.CurrencyCode
 								+ "\nAge = " + mat.Age;

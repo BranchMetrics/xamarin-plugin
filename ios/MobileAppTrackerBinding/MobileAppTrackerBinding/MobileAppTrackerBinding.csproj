@@ -47,11 +47,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Xamarin.ObjcBinding.CSharp.targets" />
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="MobileAppTracker.a" />
+    <ObjcBindingNativeLibrary Include="MobileAppTracker-2.7.a" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MobileAppTracker.linkwith.cs">
-      <DependentUpon>MobileAppTracker.a</DependentUpon>
+    <Compile Include="MobileAppTracker-2.7.linkwith.cs">
+      <DependentUpon>MobileAppTracker-2.7.a</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

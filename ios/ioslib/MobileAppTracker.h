@@ -2,13 +2,13 @@
 //  MobileAppTracker.h
 //  MobileAppTracker
 //
-//  Created by HasOffers on 10/30/13.
+//  Created by HasOffers on 01/02/13.
 //  Copyright (c) 2013 HasOffers. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-#define MATVERSION @"2.6.1"
+#define MATVERSION @"2.7"
 
 @protocol MobileAppTrackerDelegate;
 
@@ -22,18 +22,13 @@
 #pragma mark - MATGender
 
 /** @name Gender type constants */
-/*!
- Gender type. An integer -- 0 or 1.
- */
-typedef NSInteger MATGender;
-/*!
- Gender type MALE. Equals 0.
- */
-extern const NSInteger MAT_GENDER_MALE;
-/*!
- Gender type FEMALE. Equals 1.
- */
-extern const NSInteger MAT_GENDER_FEMALE;
+typedef enum {
+    MATGenderMale=0,                   // Gender type MALE. Equals 0.
+    MATGenderFemale=1,                 // Gender type FEMALE. Equals 1.
+    
+    MAT_GENDER_MALE=MATGenderMale,     // Backward-compatible alias for MATGenderMale.
+    MAT_GENDER_FEMALE=MATGenderFemale  // Backward-compatible alias for MATGenderFemale.
+} MATGender;
 
 
 #pragma mark - MobileAppTracker Shared Instance
@@ -169,19 +164,19 @@ extern const NSInteger MAT_GENDER_FEMALE;
  Sets the MAC address.
  @param macAddress mac address, defaults to nil.
  */
-- (void)setMACAddress:(NSString *)macAddress;
+- (void)setMACAddress:(NSString *)macAddress __deprecated;
 
 /*!
  Sets the ODIN-1.
  @param odin1 ODIN-1, defaults to nil.
  */
-- (void)setODIN1:(NSString *)odin1;
+- (void)setODIN1:(NSString *)odin1 __deprecated;
 
 /*!
  Sets the OpenUDID.
  @param openUDID OpenUDID, defaults to nil.
  */
-- (void)setOpenUDID:(NSString *)openUDID;
+- (void)setOpenUDID:(NSString *)openUDID __deprecated;
 
 /*!
  Sets the site id.
@@ -202,11 +197,29 @@ extern const NSInteger MAT_GENDER_FEMALE;
 - (void)setUserId:(NSString *)userId;
 
 /*!
- Sets the UIID. UIID is replacement of the deprecated UDID in iOS for Asia and Japan.
+ Set user's Facebook ID.
+ @param facebookUserId string containing the user's Facebook user ID.
+ */
+- (void)setFacebookUserId:(NSString *)facebookUserId;
+
+/*!
+ Set user's Twitter ID.
+ @param twitterUserId string containing the user's Twitter user ID.
+ */
+- (void)setTwitterUserId:(NSString *)twitterUserId;
+
+/*!
+ Set user's Google ID.
+ @param googleUserId string containing the user's Google user ID.
+ */
+- (void)setGoogleUserId:(NSString *)googleUserId;
+
+/*!
+ Sets the UIID. UIID is a replacement of the deprecated UDID in iOS for Asia and Japan.
  Ref: https://github.com/akisute/UIApplication-UIID
  @param uiid UIID, defaults to nil.
  */
-- (void)setUIID:(NSString *)uiid;
+- (void)setUIID:(NSString *)uiid __deprecated;
 
 /*!
  Sets the user's age.
@@ -216,7 +229,7 @@ extern const NSInteger MAT_GENDER_FEMALE;
 
 /*!
  Sets the user's gender.
- @param userGender user's gender, possible values MAT_GENDER_MALE (0), MAT_GENDER_FEMALE (1).
+ @param userGender user's gender, possible values MATGenderMale, MATGenderFemale
  */
 - (void)setGender:(MATGender)userGender;
 
@@ -241,6 +254,12 @@ extern const NSInteger MAT_GENDER_FEMALE;
  @param enable YES means opt-in, NO means opt-out.
  */
 - (void)setAppAdTracking:(BOOL)enable;
+
+/*!
+ Set the name of plugin used, if any.
+ @param pluginName
+ */
+- (void)setPluginName:(NSString *)pluginName;
 
 
 #pragma mark - Track Install/Update Methods

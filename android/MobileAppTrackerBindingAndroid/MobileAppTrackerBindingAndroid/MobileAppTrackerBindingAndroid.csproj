@@ -54,6 +54,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Xamarin.Android.Bindings.targets" />
   <ItemGroup>
-    <EmbeddedJar Include="Jars\MobileAppTracker.jar" />
+    <EmbeddedJar Include="Jars\MobileAppTracker-2.7.jar" />
   </ItemGroup>
 </Project>
