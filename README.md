@@ -1,3 +1,5 @@
 # MAT Xamarin Binding
 
-The MobileAppTracking (MAT) Binding for Xamarin provides event tracking functionality.
+Please see the Quick Start guide here:
+
+[Xamarin Quick Start](http://support.mobileapptracking.com/entries/25999174)

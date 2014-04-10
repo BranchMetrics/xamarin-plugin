@@ -5,7 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using HasOffers;
+using MobileAppTracking;
 using Android.Util;
 using System.Collections.Generic;
 
@@ -14,8 +14,6 @@ namespace TestApp
 	[Activity (Label = "TestApp", MainLauncher = true)]
 	public class MainActivity : Activity
 	{
-		MobileAppTracker mat;
-
 		const String MAT_ADVERTISER_ID = "877";
 		const String MAT_CONVERSION_KEY = "8c14d6bbe466b65211e781d62e301eec";
 
@@ -39,7 +37,7 @@ namespace TestApp
 			aButton.Click += delegate {
 				Log.Info (TAG, "MobileAppTracker constructor");
 
-				mat = new MobileAppTracker (this, MAT_ADVERTISER_ID, MAT_CONVERSION_KEY);
+				MobileAppTracker.Init(this.ApplicationContext, MAT_ADVERTISER_ID, MAT_CONVERSION_KEY);
 			};
 			layout.AddView (aButton);
 
@@ -50,7 +48,7 @@ namespace TestApp
 
 				Log.Info (TAG, "SetDebugMode = " + isDebug);
 
-				mat.SetDebugMode(isDebug);
+				MobileAppTracker.Instance.SetDebugMode(isDebug);
 			};
 			layout.AddView (aButton);
 
@@ -61,50 +59,42 @@ namespace TestApp
 
 				Log.Info (TAG, "SetAllowDuplicates = " + isAllowDup);
 
-				mat.SetAllowDuplicates(isAllowDup);
+				MobileAppTracker.Instance.SetAllowDuplicates(isAllowDup);
 			};
 			layout.AddView (aButton);
 
 			aButton = new Button (this);
-			aButton.Text = "Test Install";
+			aButton.Text = "Test Session";
 			aButton.Click += (sender, e) => {
-				Log.Info (TAG, "TrackInstall");
+				Log.Info (TAG, "MeasureSession");
 
-				mat.TrackInstall();
+				MobileAppTracker.Instance.MeasureSession();
 			};
 			layout.AddView (aButton);
 
-			aButton = new Button (this);
-			aButton.Text = "Test Update";
-			aButton.Click += (sender, e) => {
-				Log.Info (TAG, "TrackUpdate");
-
-				mat.TrackUpdate();
-			};
-			layout.AddView (aButton);
 
 			aButton = new Button (this);
 			aButton.Text = "Test Event";
 			aButton.Click += (sender, e) => {
-				Log.Info (TAG, "Track Event");
+				Log.Info (TAG, "Measure Event");
 
-				mat.TrackAction("event1");
+				MobileAppTracker.Instance.MeasureAction("event1");
 			};
 			layout.AddView (aButton);
 
 			aButton = new Button (this);
 			aButton.Text = "Test Event With Items";
 			aButton.Click += (sender, e) => {
-				Log.Info (TAG, "Track Event With Items");
+				Log.Info (TAG, "Measure Event With Items");
 
 				MATEventItem item1 = new MATEventItem("apple", 1, 0.99, 0.99);
-				MATEventItem item2 = new MATEventItem("banana", "att1", "att2", "att3", "att4", "att5");
+				MATEventItem item2 = new MATEventItem("banana", "attr1", "attr2", "attr3", "attr4", "attr5");
 
 				List<MATEventItem> list = new List<MATEventItem>();
 				list.Add(item1);
 				list.Add(item2);
 
-				mat.TrackAction("checkout", list);
+				MobileAppTracker.Instance.MeasureAction("checkout", list);
 			};
 			layout.AddView (aButton);
 
@@ -113,37 +103,57 @@ namespace TestApp
 			aButton.Click += (sender, e) => {
 				Log.Info (TAG, "Test Setters");
 
-				mat.PackageName = "com.abc.xyz";
-				mat.SiteId = "12345";
-				mat.UserId = "user123";
-				mat.TRUSTeId = "truste123";
-				mat.RefId = "ref123";
-				mat.Latitude = 1.23;
-				mat.Longitude = 12.3;
-				mat.Altitude = 123.4;
-				mat.AdvertiserId = "5432";
-				mat.Gender = MobileAppTracker.GenderFemale;
-				mat.CurrencyCode = "RUB";
-				mat.Age = 23;
+				MobileAppTracker.Instance.PackageName = "com.abc.xyz";
+				MobileAppTracker.Instance.SiteId = "12345";
+				MobileAppTracker.Instance.UserId = "user123";
+				MobileAppTracker.Instance.TRUSTeId = "truste123";
+				MobileAppTracker.Instance.Latitude = 1.23;
+				MobileAppTracker.Instance.Longitude = 12.3;
+				MobileAppTracker.Instance.Altitude = 123.4;
+				MobileAppTracker.Instance.Gender = MobileAppTracker.GenderFemale;
+				MobileAppTracker.Instance.CurrencyCode = "RUB";
+				MobileAppTracker.Instance.Age = 23;
+				MobileAppTracker.Instance.ExistingUser = false;
+				MobileAppTracker.Instance.IsPayingUser = true;
+				MobileAppTracker.Instance.UserEmail = "temp@temp.com";
+				MobileAppTracker.Instance.UserName = "tempUserName";
+				MobileAppTracker.Instance.SetGoogleAdvertisingId("12345678-1234-1234-1234-123456789012", false);
 
-				mat.SetFacebookUserId("tempFacebookId");
-				mat.SetGoogleUserId("tempGoogleId");
-				mat.SetTwitterUserId("tempTwitterId");
+				MobileAppTracker.Instance.FacebookUserId = "tempFacebookId";
+				MobileAppTracker.Instance.GoogleUserId = "tempGoogleId";
+				MobileAppTracker.Instance.SetTwitterUserId("tempTwitterId");
 
-				String matData = "\nPackageName = " + mat.PackageName
-								+ "\nSiteId = " + mat.SiteId
-								+ "\nUserId = " + mat.UserId
-								+ "\nTRUSTeId = " + mat.TRUSTeId
-								+ "\nRefId = " + mat.RefId
-								+ "\nLatitude = " + mat.Latitude
-								+ "\nLongitude = " + mat.Longitude
-								+ "\nAltitude = " + mat.Altitude
-								+ "\nAdvertiserId = " + mat.AdvertiserId
-								+ "\nGender = " + mat.Gender
-								+ "\nCurrencyCode = " + mat.CurrencyCode
-								+ "\nAge = " + mat.Age;
+				String matData = "\nPackageName = " + MobileAppTracker.Instance.PackageName
+					+ "\nSiteId = " + MobileAppTracker.Instance.SiteId
+					+ "\nUserId = " + MobileAppTracker.Instance.UserId
+					+ "\nTRUSTeId = " + MobileAppTracker.Instance.TRUSTeId
+					+ "\nRefId = " + MobileAppTracker.Instance.RefId
+					+ "\nLatitude = " + MobileAppTracker.Instance.Latitude
+					+ "\nLongitude = " + MobileAppTracker.Instance.Longitude
+					+ "\nAltitude = " + MobileAppTracker.Instance.Altitude
+					+ "\nAdvertiserId = " + MobileAppTracker.Instance.AdvertiserId
+					+ "\nGender = " + MobileAppTracker.Instance.Gender
+					+ "\nCurrencyCode = " + MobileAppTracker.Instance.CurrencyCode
+					+ "\nAge = " + MobileAppTracker.Instance.Age;
 
 				Log.Info (TAG, "MAT Data: " + matData);
+			};
+			layout.AddView (aButton);
+
+			aButton = new Button (this);
+			aButton.Text = "Test Getters";
+			aButton.Click += (sender, e) => {
+				Log.Info (TAG, "Test Getters");
+
+				String matId = MobileAppTracker.Instance.MatId;
+				String openLogId = MobileAppTracker.Instance.OpenLogId;
+				bool isPaying = MobileAppTracker.Instance.IsPayingUser;
+
+				String matData = "\nMatId = " + matId
+					+ "\nOpenLogId = " + openLogId
+					+ "\nIsPayingUser = " + isPaying;
+
+				Log.Info (TAG, matData);
 			};
 			layout.AddView (aButton);
 
@@ -151,5 +161,3 @@ namespace TestApp
 		}
 	}
 }
-
-

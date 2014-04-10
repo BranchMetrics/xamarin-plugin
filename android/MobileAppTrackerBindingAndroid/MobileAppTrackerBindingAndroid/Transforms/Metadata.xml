@@ -7,7 +7,9 @@
 	<remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
 	-->
 	
-	<!-- Rename namespace from "com.mobileapptracker" to "HasOffers" so that it won't clash with the class name "MobileAppTracker" -->
-	<attr path="/api/package[@name='com.mobileapptracker']" name="managedName">HasOffers</attr>
+	<!-- Rename namespace from "com.mobileapptracker" to "MobileAppTracking" so that it won't clash with the class name "MobileAppTracker" 
+	and also matches the namespace name used in the iOS binding project.
+	-->
+	<attr path="/api/package[@name='com.mobileapptracker']" name="managedName">MobileAppTracking</attr>
 
 </metadata>

@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MATTest", "MATTest\MATTest.csproj", "{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileAppTrackerBinding", "MobileAppTrackerBinding\MobileAppTrackerBinding.csproj", "{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Release|iPhone.Build.0 = Release|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Debug|iPhone.Build.0 = Debug|iPhone
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Release|iPhone.ActiveCfg = Release|iPhone
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Release|iPhone.Build.0 = Release|iPhone
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = MATTest\MATTest.csproj
+	EndGlobalSection
+EndGlobal
