@@ -7,7 +7,7 @@ using MonoTouch.UIKit;
 namespace MobileAppTracking
 {
     [BaseType (typeof (NSObject))]
-    public partial interface MobileAppTracker {
+    public interface MobileAppTracker {
 
         [Static, Export ("initializeWithMATAdvertiserId:MATConversionKey:")]
         void InitTracker (string aid, string key);
@@ -71,6 +71,30 @@ namespace MobileAppTracking
 
         [Static, Export ("setEventAttribute5:")]
         void SetEventAttribute5 (string attr5);
+
+        [Static, Export ("setEventContentId:")]
+        void SetEventContentId (string contentId);
+
+        [Static, Export ("setEventContentType:")]
+        void SetEventContentType (string contentType);
+
+        [Static, Export ("setEventDate1:")]
+        void SetEventDate1 (NSDate date);
+
+        [Static, Export ("setEventDate2:")]
+        void SetEventDate2 (NSDate date);
+
+        [Static, Export ("setEventLevel:")]
+        void SetEventLevel(int level);
+
+        [Static, Export ("setEventQuantity:")]
+        void SetEventQuantity(int quantity);
+
+        [Static, Export ("setEventRating:")]
+        void SetEventRating(float rating);
+
+        [Static, Export ("setEventSearchString:")]
+        void SetEventSearchString (string searchString);
 
         [Static, Export ("setSiteId:")]
         void SetSiteId (string siteId);
@@ -158,8 +182,8 @@ namespace MobileAppTracking
     }
 
     [BaseType (typeof (NSObject))]
-    [Model]
-    public partial interface MobileAppTrackerDelegate {
+    [Model][Protocol]
+    public interface MobileAppTrackerDelegate {
 
         [Export ("mobileAppTrackerDidSucceedWithData:")]
         void MobileAppTrackerDidSucceed (NSData data);
@@ -169,10 +193,19 @@ namespace MobileAppTracking
 
         [Export ("mobileAppTrackerEnqueuedActionWithReferenceId:")]
         void MobileAppTrackerEnqueuedAction (string referenceId);
+
+        [Export ("mobileAppTrackerDidDisplayiAd")]
+        void MobileAppTrackerDidDisplayiAd ();
+
+        [Export ("mobileAppTrackerDidRemoveiAd")]
+        void MobileAppTrackerDidRemoveiAd ();
+
+        [Export ("mobileAppTrackerFailedToReceiveiAdWithError:")]
+        void MobileAppTrackerFailedToReceiveiAdWithError (NSError error);
     }
 
     [BaseType (typeof (NSObject))]
-    public partial interface MATEventItem {
+    public interface MATEventItem {
 
         [Export ("item", ArgumentSemantic.Copy)]
         string Item { get; set; }
