@@ -94,7 +94,7 @@ namespace TestApp
 				list.Add(item1);
 				list.Add(item2);
 
-				MobileAppTracker.Instance.MeasureAction("checkout", list);
+				MobileAppTracker.Instance.MeasureAction("checkout", list, 0, null, null);
 			};
 			layout.AddView (aButton);
 
@@ -121,7 +121,7 @@ namespace TestApp
 
 				MobileAppTracker.Instance.FacebookUserId = "tempFacebookId";
 				MobileAppTracker.Instance.GoogleUserId = "tempGoogleId";
-				MobileAppTracker.Instance.SetTwitterUserId("tempTwitterId");
+				MobileAppTracker.Instance.TwitterUserId = "tempTwitterId";
 
 				String matData = "\nPackageName = " + MobileAppTracker.Instance.PackageName
 					+ "\nSiteId = " + MobileAppTracker.Instance.SiteId

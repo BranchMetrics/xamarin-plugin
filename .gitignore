@@ -1,28 +1,4 @@
 **/obj
 **/*.userprefs
 android/MobileAppTrackerBindingAndroid/TestApp/bin
-ios/MobileAppTrackerBindingAndroid/TestApp/bin
-
-# Ignore the mobileprovisioningprofile
-**/*.mobileprovision
-
-# Xcode
-**/*.pbxuser
-**/*.mode1v3
-**/*.mode2v3
-**/*.perspectivev3
-**/*.xcuserstate
-**/*.xcbkptlist
-
-**/xcuserdata/
-
-# Editor tags files
-TAGS
-
-# Mono Debug Files
-**/*.pidb
-
-# OS X
-.DS_Store
-.pid_file
-.sass-cache
+ios/MobileAppTrackerBindingiOS/MATTest/bin

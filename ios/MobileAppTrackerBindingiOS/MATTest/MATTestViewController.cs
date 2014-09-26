@@ -65,6 +65,10 @@ namespace MATTest
                 MobileAppTracker.MeasureAction("eventAction1");
                 MobileAppTracker.MeasureAction("eventAction2", "ref1");
                 MobileAppTracker.MeasureAction("eventAction3", "ref2", 1.99f, "GBP");
+
+                MobileAppTracker.MeasureAction(932851438);
+                MobileAppTracker.MeasureAction(932851438, "ref3");
+                MobileAppTracker.MeasureAction(932851438, "ref4", 1.99f, "GBP");
             };
 
             btnActionWithItems.TouchUpInside += delegate {
@@ -73,8 +77,12 @@ namespace MATTest
                 MATEventItem item2 = MATEventItem.EventItemWithName("item2", 0.50f, 2, 1.0f);
 
                 MobileAppTracker.MeasureAction("eventItems", new MATEventItem[]{item1, item2});
-                MobileAppTracker.MeasureAction("eventItems", new MATEventItem[]{item1, item2}, "ref3");
-                MobileAppTracker.MeasureAction("eventItems", new MATEventItem[]{item1, item2}, "ref4", 0.89f, "CAD", 0);
+                MobileAppTracker.MeasureAction("eventItems", new MATEventItem[]{item1, item2}, "ref5");
+                MobileAppTracker.MeasureAction("eventItems", new MATEventItem[]{item1, item2}, "ref6", 0.89f, "CAD", 0);
+
+                MobileAppTracker.MeasureAction(932851438, new MATEventItem[]{item1, item2});
+                MobileAppTracker.MeasureAction(932851438, new MATEventItem[]{item1, item2}, "ref7");
+                MobileAppTracker.MeasureAction(932851438, new MATEventItem[]{item1, item2}, "ref8", 0.89f, "CAD", 0);
             };
 
             btnActionWithReceipt.TouchUpInside += delegate {
@@ -82,7 +90,9 @@ namespace MATTest
                 MATEventItem item1 = MATEventItem.EventItemWithName("item1", 0.99f, 1, 0.99f, "6", "7", "8", "9", "10");
                 MATEventItem item2 = MATEventItem.EventItemWithName("item2", 0.50f, 2, 1.0f);
 
-                MobileAppTracker.MeasureAction("eventReceipt", new MATEventItem[]{item1, item2}, "ref5", 132.6f, "RUB", 0, NSData.FromString(GetSampleiTunesIAPReceipt()));
+                MobileAppTracker.MeasureAction("eventReceipt", new MATEventItem[]{item1, item2}, "ref9", 132.6f, "RUB", 0, NSData.FromString(GetSampleiTunesIAPReceipt()));
+
+                MobileAppTracker.MeasureAction(932851438, new MATEventItem[]{item1, item2}, "ref10", 132.6f, "RUB", 0, NSData.FromString(GetSampleiTunesIAPReceipt()));
             };
 
             btnSetterMethods.TouchUpInside += delegate {

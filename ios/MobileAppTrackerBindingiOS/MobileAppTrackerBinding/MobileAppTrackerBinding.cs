@@ -139,34 +139,64 @@ namespace MobileAppTracking
         void MeasureSession ();
 
         [Static, Export ("measureAction:")]
-        void MeasureAction (string eventIdOrName);
+        void MeasureAction (string eventName);
 
         [Static, Export ("measureAction:referenceId:")]
-        void MeasureAction (string eventIdOrName, string refId);
+        void MeasureAction (string eventName, string refId);
 
         [Static, Export ("measureAction:revenueAmount:currencyCode:")]
-        void MeasureAction (string eventIdOrName, float revenueAmount, string currencyCode);
+        void MeasureAction (string eventName, float revenueAmount, string currencyCode);
 
         [Static, Export ("measureAction:referenceId:revenueAmount:currencyCode:")]
-        void MeasureAction (string eventIdOrName, string refId, float revenueAmount, string currencyCode);
+        void MeasureAction (string eventName, string refId, float revenueAmount, string currencyCode);
 
         [Static, Export ("measureAction:eventItems:")]
-        void MeasureAction (string eventIdOrName, NSObject [] eventItems);
+        void MeasureAction (string eventName, NSObject [] eventItems);
 
         [Static, Export ("measureAction:eventItems:referenceId:")]
-        void MeasureAction (string eventIdOrName, NSObject [] eventItems, string refId);
+        void MeasureAction (string eventName, NSObject [] eventItems, string refId);
 
         [Static, Export ("measureAction:eventItems:revenueAmount:currencyCode:")]
-        void MeasureAction (string eventIdOrName, NSObject [] eventItems, float revenueAmount, string currencyCode);
+        void MeasureAction (string eventName, NSObject [] eventItems, float revenueAmount, string currencyCode);
 
         [Static, Export ("measureAction:eventItems:referenceId:revenueAmount:currencyCode:")]
-        void MeasureAction (string eventIdOrName, NSObject [] eventItems, string refId, float revenueAmount, string currencyCode);
+        void MeasureAction (string eventName, NSObject [] eventItems, string refId, float revenueAmount, string currencyCode);
 
         [Static, Export ("measureAction:eventItems:referenceId:revenueAmount:currencyCode:transactionState:")]
-        void MeasureAction (string eventIdOrName, NSObject [] eventItems, string refId, float revenueAmount, string currencyCode, int transactionState);
+        void MeasureAction (string eventName, NSObject [] eventItems, string refId, float revenueAmount, string currencyCode, int transactionState);
 
         [Static, Export ("measureAction:eventItems:referenceId:revenueAmount:currencyCode:transactionState:receipt:")]
-        void MeasureAction (string eventIdOrName, NSObject [] eventItems, string refId, float revenueAmount, string currencyCode, int transactionState, NSData receipt);
+        void MeasureAction (string eventName, NSObject [] eventItems, string refId, float revenueAmount, string currencyCode, int transactionState, NSData receipt);
+
+        [Static, Export ("measureActionWithEventId:")]
+        void MeasureAction (int eventId);
+
+        [Static, Export ("measureActionWithEventId:referenceId:")]
+        void MeasureAction (int eventId, string refId);
+
+        [Static, Export ("measureActionWithEventId:revenueAmount:currencyCode:")]
+        void MeasureAction (int eventId, float revenueAmount, string currencyCode);
+
+        [Static, Export ("measureActionWithEventId:referenceId:revenueAmount:currencyCode:")]
+        void MeasureAction (int eventId, string refId, float revenueAmount, string currencyCode);
+
+        [Static, Export ("measureActionWithEventId:eventItems:")]
+        void MeasureAction(int eventId, NSObject [] eventItems);
+
+        [Static, Export ("measureActionWithEventId:eventItems:referenceId:")]
+        void MeasureAction(int eventId, NSObject [] eventItems, string refId);
+
+        [Static, Export ("measureActionWithEventId:eventItems:revenueAmount:currencyCode:")]
+        void MeasureAction(int eventId, NSObject [] eventItems, float revenueAmount, string currencyCode);
+
+        [Static, Export ("measureActionWithEventId:eventItems:referenceId:revenueAmount:currencyCode:")]
+        void MeasureAction(int eventId, NSObject [] eventItems, string refId, float revenueAmount, string currencyCode);
+
+        [Static, Export ("measureActionWithEventId:eventItems:referenceId:revenueAmount:currencyCode:transactionState:")]
+        void MeasureAction(int eventId, NSObject [] eventItems, string refId, float revenueAmount, string currencyCode, int transactionState);
+
+        [Static, Export ("measureActionWithEventId:eventItems:referenceId:revenueAmount:currencyCode:transactionState:receipt:")]
+        void MeasureAction(int eventId, NSObject [] eventItems, string refId, float revenueAmount, string currencyCode, int transactionState, NSData receipt);
 
         [Static, Export ("setUseCookieTracking:")]
         void SetUseCookieTracking(bool enable);
