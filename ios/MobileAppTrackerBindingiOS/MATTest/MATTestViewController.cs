@@ -97,6 +97,8 @@ namespace MATTest
 
             btnSetterMethods.TouchUpInside += delegate {
 
+                Console.WriteLine("MAT setter methods");
+
                 MobileAppTracker.SetTRUSTeId("tempTrusteTPID");
                 MobileAppTracker.SetUserId("tempUserId");
                 MobileAppTracker.SetUserEmail("temp@temp.com");
