@@ -15,6 +15,9 @@ namespace MobileAppTracking
         [Static, Export ("setDelegate:")]
         void SetDelegate(MobileAppTrackerDelegate matDelegate);
 
+        [Static, Export ("checkForDeferredDeeplinkWithTimeout:")]
+        void CheckForDeferredDeeplinkWithTimeout(double timeout);
+
         [Static, Export ("matId")]
         string MatId { get; }
 
@@ -113,6 +116,9 @@ namespace MobileAppTracking
 
         [Static, Export ("setFacebookUserId:")]
         void SetFacebookUserId (string facebookUserId);
+
+        [Static, Export ("setFacebookEventLogging:limitEventAndDataUsage:")]
+        void SetFacebookEventLogging (bool enable, bool limit);
 
         [Static, Export ("setTwitterUserId:")]
         void SetTwitterUserId (string twitterUserId);

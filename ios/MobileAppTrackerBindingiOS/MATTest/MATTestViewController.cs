@@ -41,6 +41,10 @@ namespace MATTest
                 MobileAppTracker.SetPackageName(MAT_PACKAGE_NAME);
                 MobileAppTracker.SetAppleAdvertisingIdentifier(ASIdentifierManager.SharedManager.AdvertisingIdentifier, ASIdentifierManager.SharedManager.IsAdvertisingTrackingEnabled);
 
+                MobileAppTracker.CheckForDeferredDeeplinkWithTimeout(0.75); // 0.75 sec
+
+                MobileAppTracker.SetFacebookEventLogging(true, false);
+
                 Console.WriteLine("MAT Tracker Started : adv id = {0}, conv key = {1}, package name = {2}", MAT_ADVERTISER_ID, MAT_CONVERSION_KEY, MAT_PACKAGE_NAME);
             };
 
@@ -134,6 +138,7 @@ namespace MATTest
                 MobileAppTracker.SetEventSearchString("testSearchString");
 
                 MobileAppTracker.SetExistingUser(false);
+                MobileAppTracker.SetFacebookEventLogging(true, false);
                 MobileAppTracker.SetPayingUser(false);
             };
 

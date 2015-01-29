@@ -58,11 +58,11 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="Resources\MobileAppTracker-3.5.3.a" />
+    <ObjcBindingNativeLibrary Include="Resources\MobileAppTracker-3.7.a" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources\MobileAppTracker-3.5.3.linkwith.cs">
-      <DependentUpon>MobileAppTracker-3.5.3.a</DependentUpon>
+    <Compile Include="Resources\MobileAppTracker-3.7.linkwith.cs">
+      <DependentUpon>MobileAppTracker-3.7.a</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

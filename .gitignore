@@ -2,6 +2,3 @@
 **/*.userprefs
 android/MobileAppTrackerBindingAndroid/TestApp/bin
 ios/MobileAppTrackerBindingiOS/MATTest/bin
-
-# OS X
-.DS_Store

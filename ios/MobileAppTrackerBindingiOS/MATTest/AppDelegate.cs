@@ -32,6 +32,13 @@ namespace MATTest
             
             return true;
         }
+
+        public override bool OpenUrl (UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+        {
+            Console.WriteLine ("AppDelegate.OpenUrl: url = " + url + ", sourceApplication = " + sourceApplication);
+
+            return true;
+        }
     }
 }
 
