@@ -41,7 +41,6 @@ Global
 		{7A46FA44-CAD2-4E21-841C-2E32ADD8F703}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = MATTest\MATTest.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
@@ -75,5 +74,6 @@ Global
 		$0.StandardHeader = $9
 		$9.Text = 
 		$9.IncludeInNewFiles = True
+		version = 3.7
 	EndGlobalSection
 EndGlobal

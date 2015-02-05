@@ -4,7 +4,7 @@
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoTouch.Foundation;
+using Foundation;
 using System.CodeDom.Compiler;
 
 namespace MATTest
@@ -13,34 +13,34 @@ namespace MATTest
     partial class MATTestViewController
     {
         [Outlet]
-        MonoTouch.UIKit.UIButton btnAction { get; set; }
+        UIKit.UIButton btnAction { get; set; }
 
         [Outlet]
-        MonoTouch.UIKit.UIButton btnActionWithItems { get; set; }
+        UIKit.UIButton btnActionWithItems { get; set; }
 
         [Outlet]
-        MonoTouch.UIKit.UIButton btnActionWithReceipt { get; set; }
+        UIKit.UIButton btnActionWithReceipt { get; set; }
 
         [Outlet]
-        MonoTouch.UIKit.UIButton btnAllowDup { get; set; }
+        UIKit.UIButton btnAllowDup { get; set; }
 
         [Outlet]
-        MonoTouch.UIKit.UIButton btnDebug { get; set; }
+        UIKit.UIButton btnDebug { get; set; }
 
         [Outlet]
-        MonoTouch.UIKit.UIButton btnDelegate { get; set; }
+        UIKit.UIButton btnDelegate { get; set; }
 
         [Outlet]
-        MonoTouch.UIKit.UIButton btnGetterMethods { get; set; }
+        UIKit.UIButton btnGetterMethods { get; set; }
 
         [Outlet]
-        MonoTouch.UIKit.UIButton btnSession { get; set; }
+        UIKit.UIButton btnSession { get; set; }
 
         [Outlet]
-        MonoTouch.UIKit.UIButton btnSetterMethods { get; set; }
+        UIKit.UIButton btnSetterMethods { get; set; }
 
         [Outlet]
-        MonoTouch.UIKit.UIButton btnStart { get; set; }
+        UIKit.UIButton btnStart { get; set; }
         
         void ReleaseDesignerOutlets ()
         {

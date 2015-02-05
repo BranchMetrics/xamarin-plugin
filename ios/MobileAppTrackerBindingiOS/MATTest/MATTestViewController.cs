@@ -1,8 +1,8 @@
 using System;
-using System.Drawing;
-using MonoTouch.AdSupport;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using AdSupport;
+using Foundation;
+using UIKit;
 using MobileAppTracking;
 
 namespace MATTest
