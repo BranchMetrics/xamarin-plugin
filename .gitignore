@@ -1,7 +1,8 @@
 **/obj
 **/*.userprefs
-android/MobileAppTrackerBindingAndroid/TestApp/bin
-ios/MobileAppTrackerBindingiOS/MATTest/bin
+**/**/MATTest/bin
+**/**/TestApp/bin
+**/bin/Debug/
 
 # OS X
 .DS_Store
