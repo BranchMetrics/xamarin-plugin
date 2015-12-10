@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>MobileAppTracking.Xamarin.iOS</id>
-    <version>4.0.0</version>
+    <version>4.1.0</version>
     <authors>johng</authors>
     <owners>TUNE</owners>
     <licenseUrl>https://github.com/MobileAppTracking/xamarin-plugin/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/MobileAppTracking/xamarin-plugin</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The MobileAppTracking™ (MAT) SDK for Xamarin.iOS provides application session and event logging functionality. This SDK is available in the form of a single .DLL file that you simply include in your project.</description>
-    <releaseNotes>Updated for iOS SDK 3.14.1.</releaseNotes>
+    <releaseNotes>Updated for iOS SDK 3.15.0.</releaseNotes>
     <copyright>Copyright 2015 TUNE, Inc.</copyright>
     <tags>attribution analytics mobileapptracking mat tune</tags>
   </metadata>
