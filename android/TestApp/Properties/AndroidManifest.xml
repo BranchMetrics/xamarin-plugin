@@ -1,13 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.hasoffers.xamarinsample">
-	<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="23" />
+	<uses-sdk android:minSdkVersion="10" />
 	<application android:label="XamarinAndroidTestApp">
+	    <receiver android:name="com.tune.TuneTracker" android:exported="true">
+			<intent-filter>
+				<action android:name="com.android.vending.INSTALL_REFERRER" />
+			</intent-filter>
+		</receiver>
+		<receiver
+        	android:name="com.tune.ma.push.service.TunePushReceiver"
+        	android:permission="com.google.android.c2dm.permission.SEND">
+        	<intent-filter>
+            	<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            	<category android:name="com.hasoffers.xamarinsample" />
+            	<!-- To support pre-4.4 KitKat devices -->
+            	<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        	</intent-filter>
+    	</receiver>
+    	<service android:name="com.tune.ma.push.service.TunePushService" />
 	</application>
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<receiver android:name="com.mobileapptracker.Tracker" android:exported="true">
-		<intent-filter>
-			<action android:name="com.android.vending.INSTALL_REFERRER" />
-		</intent-filter>
-	</receiver>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<permission android:name="com.hasoffers.xamarinsample.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+	<uses-permission android:name="com.hasoffers.xamarinsample.permission.C2D_MESSAGE"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
 </manifest>

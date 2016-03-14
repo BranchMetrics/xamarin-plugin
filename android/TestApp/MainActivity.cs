@@ -6,174 +6,153 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Util;
+using Android.Gms.Common;
 using System.Collections.Generic;
-using MobileAppTracking;
+using TuneSDK;
+using Com.Tune.MA.Application;
 
 namespace TestApp
 {
-	[Activity (Label = "TestApp", MainLauncher = true)]
-	public class MainActivity : Activity
-	{
-		const String MAT_ADVERTISER_ID = "877";
-		const String MAT_CONVERSION_KEY = "8c14d6bbe466b65211e781d62e301eec";
+    [Activity (Label = "TestApp", MainLauncher = true)]
+    public class MainActivity : TuneActivity
+    {
+        bool isDebug = false;
 
-		bool isDebug = false;
-		bool isAllowDup = false;
+        const string TAG = "testTuneXamarin";
 
-		const string TAG = "testMATXamarin";
+        Tune tune;
 
-		MobileAppTracker mat;
+        protected override void OnCreate (Bundle bundle)
+        {
+            base.OnCreate (bundle);
 
-		protected override void OnCreate (Bundle bundle)
-		{
-			base.OnCreate (bundle);
+            tune = Tune.Instance;
 
-			//Create the user interface in code
-			var layout = new LinearLayout (this);
-			layout.Orientation = Orientation.Vertical;
+            //Create the user interface in code
+            var layout = new LinearLayout (this);
+            layout.Orientation = Orientation.Vertical;
 
-			// Get our button from the layout resource,
-			// and attach an event to it
-			var aButton = new Button (this);
-			aButton.Text = "Start MobileAppTracker";
-			aButton.Click += delegate {
-				Log.Info (TAG, "MobileAppTracker constructor");
+            TextView powerhookText = new TextView (this);
+            powerhookText.Text = tune.GetValueForHookById ("hookId");
+            layout.AddView (powerhookText);
 
-				mat = MobileAppTracker.Init(this.ApplicationContext, MAT_ADVERTISER_ID, MAT_CONVERSION_KEY);
-				mat.SetFacebookEventLogging(true, this, false);
-				MATDeeplinkListener listener = new MATDeeplinkListener();
-				mat.CheckForDeferredDeeplink(listener);
-			};
-			layout.AddView (aButton);
+            // Get our button from the layout resource,
+            // and attach an event to it
+            Button aButton = new Button (this);
+            aButton.Text = "Toggle Debug Mode";
+            aButton.Click += (sender, e) => {
+                isDebug = !isDebug;
 
-			aButton = new Button (this);
-			aButton.Text = "Toggle Debug Mode";
-			aButton.Click += (sender, e) => {
-				isDebug = !isDebug;
+                Log.Info (TAG, "SetDebugMode = " + isDebug);
 
-				Log.Info (TAG, "SetDebugMode = " + isDebug);
+                tune.SetDebugMode(isDebug);
+            };
+            layout.AddView (aButton);
 
-				mat.SetDebugMode(isDebug);
-			};
-			layout.AddView (aButton);
+            aButton = new Button (this);
+            aButton.Text = "Test Session";
+            aButton.Click += (sender, e) => {
+                Log.Info (TAG, "MeasureSession");
 
-			aButton = new Button (this);
-			aButton.Text = "Toggle Allow Duplicates";
-			aButton.Click += (sender, e) => {
-				isAllowDup = !isAllowDup;
-
-				Log.Info (TAG, "SetAllowDuplicates = " + isAllowDup);
-
-				mat.SetAllowDuplicates(isAllowDup);
-			};
-			layout.AddView (aButton);
-
-			aButton = new Button (this);
-			aButton.Text = "Test Session";
-			aButton.Click += (sender, e) => {
-				Log.Info (TAG, "MeasureSession");
-
-				mat.SetReferralSources(this);
-				mat.MeasureSession();
-			};
-			layout.AddView (aButton);
+                tune.SetReferralSources(this);
+                tune.MeasureSession();
+            };
+            layout.AddView (aButton);
 
 
-			aButton = new Button (this);
-			aButton.Text = "Test Event";
-			aButton.Click += (sender, e) => {
-				Log.Info (TAG, "Measure Event");
+            aButton = new Button (this);
+            aButton.Text = "Test Event";
+            aButton.Click += (sender, e) => {
+                Log.Info (TAG, "Measure Event");
 
-				mat.MeasureEvent("event1");
-			};
-			layout.AddView (aButton);
+                tune.MeasureEvent("event1");
+            };
+            layout.AddView (aButton);
 
-			aButton = new Button (this);
-			aButton.Text = "Test Event With Items";
-			aButton.Click += (sender, e) => {
-				Log.Info (TAG, "Measure Event With Items");
+            aButton = new Button (this);
+            aButton.Text = "Test Event With Items";
+            aButton.Click += (sender, e) => {
+                Log.Info (TAG, "Measure Event With Items");
 
-				MATEventItem item1 = new MATEventItem("apple")
-					.WithQuantity(1)
-					.WithRevenue(0.99)
-					.WithUnitPrice(0.99);
-				MATEventItem item2 = new MATEventItem("banana")
-					.WithAttribute1("attr1")
-					.WithAttribute2("attr2")
-					.WithAttribute3("attr3")
-					.WithAttribute4("attr4")
-					.WithAttribute5("attr5");
+                TuneEventItem item1 = new TuneEventItem("apple")
+                    .WithQuantity(1)
+                    .WithRevenue(0.99)
+                    .WithUnitPrice(0.99);
+                TuneEventItem item2 = new TuneEventItem("banana")
+                    .WithAttribute1("attr1")
+                    .WithAttribute2("attr2")
+                    .WithAttribute3("attr3")
+                    .WithAttribute4("attr4")
+                    .WithAttribute5("attr5");
 
-				List<MATEventItem> list = new List<MATEventItem>();
-				list.Add(item1);
-				list.Add(item2);
+                List<TuneEventItem> list = new List<TuneEventItem>();
+                list.Add(item1);
+                list.Add(item2);
 
-				MATEvent matEvent = new MATEvent("checkout").WithEventItems(list);
+                TuneEvent tuneEvent = new TuneEvent("checkout").WithEventItems(list);
 
-				mat.MeasureEvent(matEvent);
-			};
-			layout.AddView (aButton);
+                tune.MeasureEvent(tuneEvent);
+            };
+            layout.AddView (aButton);
 
-			aButton = new Button (this);
-			aButton.Text = "Test Setters";
-			aButton.Click += (sender, e) => {
-				Log.Info (TAG, "Test Setters");
+            aButton = new Button (this);
+            aButton.Text = "Test Setters";
+            aButton.Click += (sender, e) => {
+                Log.Info (TAG, "Test Setters");
 
-				mat.PackageName = "com.abc.xyz";
-				mat.SiteId = "12345";
-				mat.UserId = "user123";
-				mat.TRUSTeId = "truste123";
-				mat.Latitude = 1.23;
-				mat.Longitude = 12.3;
-				mat.Altitude = 123.4;
-				mat.Gender = MATGender.Female;
-				mat.CurrencyCode = "RUB";
-				mat.Age = 23;
-				mat.ExistingUser = false;
-				mat.IsPayingUser = true;
-				mat.UserEmail = "temp@temp.com";
-				mat.UserName = "tempUserName";
-				mat.SetGoogleAdvertisingId("12345678-1234-1234-1234-123456789012", false);
+                tune.PackageName = "com.abc.xyz";
+                tune.UserId = "user123";
+                tune.TRUSTeId = "truste123";
+                tune.Latitude = 1.23;
+                tune.Longitude = 12.3;
+                tune.Altitude = 123.4;
+                tune.Gender = TuneGender.Female;
+                tune.CurrencyCode = "RUB";
+                tune.Age = 23;
+                tune.ExistingUser = false;
+                tune.IsPayingUser = true;
+                tune.UserEmail = "temp@temp.com";
+                tune.UserName = "tempUserName";
+                tune.SetGoogleAdvertisingId("12345678-1234-1234-1234-123456789012", false);
 
-				mat.FacebookUserId = "tempFacebookId";
-				mat.GoogleUserId = "tempGoogleId";
-				mat.TwitterUserId = "tempTwitterId";
+                tune.FacebookUserId = "tempFacebookId";
+                tune.GoogleUserId = "tempGoogleId";
+                tune.TwitterUserId = "tempTwitterId";
 
-				String matData = "\nPackageName = " + mat.PackageName
-					+ "\nSiteId = " + mat.SiteId
-					+ "\nUserId = " + mat.UserId
-					+ "\nTRUSTeId = " + mat.TRUSTeId
-					+ "\nRefId = " + mat.RefId
-					+ "\nLatitude = " + mat.Latitude
-					+ "\nLongitude = " + mat.Longitude
-					+ "\nAltitude = " + mat.Altitude
-					+ "\nAdvertiserId = " + mat.AdvertiserId
-					+ "\nGender = " + mat.Gender
-					+ "\nCurrencyCode = " + mat.CurrencyCode
-					+ "\nAge = " + mat.Age;
+                String tuneData = "\nPackageName = " + tune.PackageName
+                    + "\nUserId = " + tune.UserId
+                    + "\nTRUSTeId = " + tune.TRUSTeId
+                    + "\nRefId = " + tune.RefId
+                    + "\nLatitude = " + tune.Latitude
+                    + "\nLongitude = " + tune.Longitude
+                    + "\nAltitude = " + tune.Altitude
+                    + "\nAdvertiserId = " + tune.AdvertiserId
+                    + "\nGender = " + tune.Gender
+                    + "\nCurrencyCode = " + tune.CurrencyCode
+                    + "\nAge = " + tune.Age;
 
-				Log.Info (TAG, "MAT Data: " + matData);
-			};
-			layout.AddView (aButton);
+                Log.Info (TAG, "TUNE Data: " + tuneData);
+            };
+            layout.AddView (aButton);
 
-			aButton = new Button (this);
-			aButton.Text = "Test Getters";
-			aButton.Click += (sender, e) => {
-				Log.Info (TAG, "Test Getters");
+            aButton = new Button (this);
+            aButton.Text = "Test Getters";
+            aButton.Click += (sender, e) => {
+                Log.Info (TAG, "Test Getters");
 
-				String matId = mat.MatId;
-				String openLogId = mat.OpenLogId;
-				bool isPaying = mat.IsPayingUser;
+                String tuneId = tune.MatId;
+                String openLogId = tune.OpenLogId;
+                bool isPaying = tune.IsPayingUser;
 
-				String matData = "\nMatId = " + matId
-					+ "\nOpenLogId = " + openLogId
-					+ "\nIsPayingUser = " + isPaying;
+                String tuneData = "\nmatId = " + tuneId
+                    + "\nOpenLogId = " + openLogId
+                    + "\nIsPayingUser = " + isPaying;
 
-				Log.Info (TAG, matData);
-			};
-			layout.AddView (aButton);
+                Log.Info (TAG, tuneData);
+            };
+            layout.AddView (aButton);
 
-			SetContentView (layout);
-		}
-	}
+            SetContentView (layout);
+        }
+    }
 }
