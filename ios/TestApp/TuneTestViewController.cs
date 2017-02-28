@@ -168,8 +168,8 @@ namespace TestApp
                 Tune.SetPhoneNumber("123-456-7890");
                 Tune.SetCurrencyCode("GBP");
                 Tune.SetGender(1);
-                Tune.SetUseCookieTracking(false);
-                Tune.SetAppAdTracking(true);
+                Tune.SetUseCookieMeasurement(false);
+                Tune.SetAppAdMeasurement(true);
                 Tune.SetAge(23);
                 Tune.SetJailbroken(false);
                 Tune.SetAppleAdvertisingIdentifier(ASIdentifierManager.SharedManager.AdvertisingIdentifier, ASIdentifierManager.SharedManager.IsAdvertisingTrackingEnabled);
@@ -184,9 +184,11 @@ namespace TestApp
 
             btnGetterMethods.TouchUpInside += delegate {
 
-                Console.WriteLine("MatId        = " + Tune.MatId);
+                Console.WriteLine("MatId        = " + Tune.TuneId);
                 Console.WriteLine("OpenLogId    = " + Tune.OpenLogId);
                 Console.WriteLine("IsPayingUser = " + Tune.IsPayingUser);
+                Console.WriteLine ("IsUserInSegmentId = " + Tune.IsUserInSegmentId("58af05ce00312de4af000003"));
+                Console.WriteLine ("IsUserInAnySegmentIds = " + Tune.IsUserInAnySegmentIds(new string [] { "58af05f100312de4af000007", "58af05ce00312de4af000003" }));
             };
         }
 
@@ -216,12 +218,16 @@ namespace TestApp
         public override void TuneDidReceiveDeeplink (string deeplink)
         {
             Console.WriteLine ("TUNE DidReceiveDeeplink: deeplink = " + deeplink);
-            Tune.SetDeeplink(deeplink, "xamarin test app");
         }
 
         public override void TuneDidFailDeeplinkWithError (NSError error)
         {
             Console.WriteLine ("TUNE DidFailDeeplinkWithError: error = " + error.Code + ", " + error.LocalizedDescription);
+        }
+
+        public override void TuneEnqueuedRequestWithPostData (string requestUrl, string postData)
+        {
+            Console.WriteLine ("TUNE TuneEnqueuedRequestWithPostData: requestUrl= " + requestUrl + " and postData=" + postData);
         }
     }
 }

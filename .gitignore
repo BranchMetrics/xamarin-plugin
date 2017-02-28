@@ -3,6 +3,7 @@
 **/**/MATTest/bin
 **/**/TestApp/bin
 **/bin/Debug/
+INTERNAL_README.md
 
 # OS X
 .DS_Store

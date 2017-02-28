@@ -11,6 +11,7 @@ namespace TuneSDK
     public delegate void DeepAction (NSDictionary extraData);
 
     [BaseType (typeof (NSObject))]
+    [Protocol]
     public interface Tune {
 
         [Static, Export ("initializeWithTuneAdvertiserId:tuneConversionKey:")]
@@ -20,16 +21,75 @@ namespace TuneSDK
         void InitTracker (string aid, string key, string packageName, bool wearable, NSDictionary config);
 
         [Static, Export ("setDelegate:")]
-        void SetDelegate(TuneDelegate matDelegate);
+        void SetDelegate(TuneDelegate tuneDelegate);
 
-        [Static, Export ("automateIapEventMeasurement:")]
-        void AutomateIapEventMeasurement(bool automate);
+        /* Deeplinking */
 
         [Static, Export ("checkForDeferredDeeplink:")]
-        void CheckForDeferredDeeplink(TuneDelegate matDelegate);
+        void CheckForDeferredDeeplink(TuneDelegate tuneDelegate);
+
+        [Static, Export ("registerDeeplinkListener:")]
+        void RegisterDeeplinkListener (TuneDelegate tuneDelegate);
+
+        [Static, Export ("unregisterDeeplinkListener")]
+        void UnregisterDeeplinkListener ();
+
+        [Static, Export ("isTuneLink:")]
+        bool IsTuneLink (string linkURL);
+
+        [Static, Export ("registerCustomTuneLinkDomain:")]
+        void RegisterCustomTuneLinkDomain (string linkDomain);
+
+        /* Tune Behavior Flags */
+
+        [Static, Export ("automateIapEventMeasurement:")]
+        void AutomateIapEventMeasurement (bool automate);
+
+        [Static, Export ("setFacebookEventLogging:limitEventAndDataUsage:")]
+        void SetFacebookEventLogging (bool enable, bool limitEventAndDataUsage);
+
+        [Static, Export ("setShouldAutoCollectAppleAdvertisingIdentifier:")]
+        void SetShouldAutoCollectAppleAdvertisingIdentifier (bool autoCollect);
+
+        [Static, Export ("setShouldAutoCollectDeviceLocation:")]
+        void SetShouldAutoCollectDeviceLocation (bool autoCollect);
+
+        [Static, Export ("setShouldAutoDetectJailbroken:")]
+        void SetShouldAutoDetectJailbroken (bool autoDetect);
+
+        [Static, Export ("setShouldAutoGenerateAppleVendorIdentifier:")]
+        void SetShouldAutoGenerateAppleVendorIdentifier (string vendorId);
+
+        /* AppDelegate methods */
+
+        [Static, Export ("handleOpenURL:sourceApplication:")]
+        void HandleOpenURL (string deeplink, UIApplication sourceApplication);
+
+        [Static, Export ("handleContinueUserActivity:restorationHandler:")]
+        void HandleContinueUserActivity (NSUserActivity userActivity, UIApplicationRestorationHandler restorationHandler);
+
+        /* Tune Device Profile */
+
+        [Static, Export ("setExistingUser:")]
+        void SetExistingUser (bool existing);
+
+        [Static, Export ("setAppleAdvertisingIdentifier:advertisingTrackingEnabled:")]
+        void SetAppleAdvertisingIdentifier (NSUuid advertisingId, bool trackingEnabled);
+
+        [Static, Export ("setAppleVendorIdentifier:")]
+        void SetAppleVendorIdentifier (NSUuid vendorId);
+
+        [Static, Export ("setCurrencyCode:")]
+        void SetCurrencyCode (string currencyCode);
+
+        [Static, Export ("setJailbroken:")]
+        void SetJailbroken (bool jailBroken);
+
+        [Static, Export ("setPackageName:")]
+        void SetPackageName (string packageName);
 
         [Static, Export ("tuneId")]
-        string MatId { get; }
+        string TuneId { get; }
 
         [Static, Export ("openLogId")]
         string OpenLogId { get; }
@@ -40,41 +100,8 @@ namespace TuneSDK
         [Static, Export ("setDebugMode:")]
         void SetDebugMode(bool enable);
 
-        [Static, Export ("setAppleAdvertisingIdentifier:advertisingTrackingEnabled:")]
-        void SetAppleAdvertisingIdentifier(NSUuid advertisingId, bool trackingEnabled);
-
-        [Static, Export ("setAppleVendorIdentifier:")]
-        void SetAppleVendorIdentifier(NSUuid vendorId);
-
-        [Static, Export ("setCurrencyCode:")]
-        void SetCurrencyCode(string currencyCode);
-
-        [Static, Export ("applicationDidOpenURL:sourceApplication:")]
-        void SetDeeplink(string deeplink, string sourceApplication);
-
-        [Static, Export ("setExistingUser:")]
-        void SetExistingUser(bool existing);
-
-        [Static, Export ("setFacebookEventLogging:limitEventAndDataUsage:")]
-        void SetFacebookEventLogging(bool enable, bool limitEventAndDataUsage);
-
         [Static, Export ("setPayingUser:")]
         void SetPayingUser(bool paying);
-
-        [Static, Export ("setJailbroken:")]
-        void SetJailbroken(bool jailBroken);
-
-        [Static, Export ("setPackageName:")]
-        void SetPackageName (string packageName);
-
-        [Static, Export ("setShouldAutoDetectJailbroken:")]
-        void SetShouldAutoDetectJailbroken(bool autoDetect);
-
-        [Static, Export ("setShouldAutoGenerateAppleVendorIdentifier:")]
-        void SetShouldAutoGenerateAppleVendorIdentifier (string vendorId);
-
-        [Static, Export("setShouldAutoCollectDeviceLocation:")]
-        void SetShouldAutoCollectDeviceLocation(bool autoCollect);
 
         [Static, Export ("setTRUSTeId:")]
         void SetTRUSTeId (string tpid);
@@ -106,8 +133,13 @@ namespace TuneSDK
         [Static, Export ("setGender:")]
         void SetGender (int gender);
 
-        [Static, Export ("setAppAdTracking:")]
-        void SetAppAdTracking (bool enable);
+        [Static, Export ("setLocation:")]
+        void SetLocation (TuneLocation location);
+
+        [Static, Export ("setAppAdMeasurement:")]
+        void SetAppAdMeasurement (bool enable);
+
+        /* Tune Event Measurement */
 
         [Static, Export ("measureSession")]
         void MeasureSession ();
@@ -121,17 +153,17 @@ namespace TuneSDK
         [Static, Export ("measureEventId:")]
         void MeasureEventId (int eventId);
 
-        [Static, Export ("setUseCookieTracking:")]
-        void SetUseCookieTracking(bool enable);
+        [Static, Export ("setUseCookieMeasurement:")]
+        void SetUseCookieMeasurement (bool enable);
 
         [Static, Export ("setRedirectUrl:")]
         void SetRedirectUrl(string redirectUrl);
 
         [Static, Export ("startAppToAppMeasurement:advertiserId:offerId:publisherId:redirect:")]
         void StartAppToAppMeasurement (string targetAppPackageName, string targetAppAdvertiserId, string targetAdvertiserOfferId, string targetAdvertiserPublisherId, bool shouldRedirect);
-    
 
         /* Custom Profile API */
+
         [Static, Export ("registerCustomProfileString:")]
         void RegisterCustomProfileString (string variableName);
 
@@ -179,10 +211,10 @@ namespace TuneSDK
 
         [Static, Export ("setCustomProfileBooleanValue:forVariable:")]
         void SetCustomProfileBooleanValue (NSNumber value, string name);
-        
+
         [Static, Export ("setCustomProfileDateTimeValue:forVariable:")]
         void SetCustomProfileDateTimeValue (NSDate value, string name);
-       
+
         [Static, Export ("setCustomProfileNumberValue:forVariable:")]
         void SetCustomProfileNumberValue (NSNumber value, string name);
 
@@ -210,17 +242,10 @@ namespace TuneSDK
         [Static, Export ("clearAllCustomProfileVariables")]
         void ClearAllCustomProfileVariables ();
 
-
         /* Power Hook API */
 
         [Static, Export ("registerHookWithId:friendlyName:defaultValue:")]
         void RegisterHookWithId (string hookId, string friendlyName, string defaultValue);
-
-        [Static, Export ("registerHookWithId:friendlyName:defaultValue:description:")]
-        void RegisterHookWithId (string hookId, string friendlyName, string defaultValue, string description);
-
-        [Static, Export ("registerHookWithId:friendlyName:defaultValue:description:approvedValues:")]
-        void RegisterHookWithId (string hookId, string friendlyName, string defaultValue, string description, string[] approvedValues);
 
         [Static, Export ("getValueForHookById:")]
         string GetValueForHookById (string hookId);
@@ -231,18 +256,13 @@ namespace TuneSDK
         [Static, Export ("onPowerHooksChanged:")]
         void OnPowerHooksChanged (TuneCallback callback);
 
-
         /* Deep Action API */
 
         [Static, Export ("registerDeepActionWithId:friendlyName:data:andAction:")]
         void RegisterDeepActionWithId (string deepActionId, string friendlyName, NSDictionary data, DeepAction deepAction);
 
-        [Static, Export ("registerDeepActionWithId:friendlyName:description:data:andAction:")]
-        void RegisterDeepActionWithId (string deepActionId, string friendlyName, string description, NSDictionary data, DeepAction deepAction);
-
-        [Static, Export ("registerDeepActionWithId:friendlyName:description:data:approvedValues:andAction:")]
-        void RegisterDeepActionWithId (string deepActionId, string friendlyName, string description, NSDictionary data, NSDictionary approvedValues, DeepAction deepAction);
-
+        [Static, Export ("executeDeepActionWithId:andData:")]
+        void ExecuteDeepActionWithId (string deepActionId, NSDictionary data);
 
         /* Experiment API */
 
@@ -260,6 +280,14 @@ namespace TuneSDK
 
         [Static, Export ("onFirstPlaylistDownloaded:withTimeout:")]
         void OnFirstPlaylistDownloaded (TuneCallback callback, double timeout);
+
+        // User in segment API
+
+        [Static, Export ("isUserInSegmentId:")]
+        bool IsUserInSegmentId (string segmentId);
+
+        [Static, Export ("isUserInAnySegmentIds:")]
+        bool IsUserInAnySegmentIds (string[] segmentIds);
     }
 
     [BaseType (typeof (NSObject))]
@@ -275,6 +303,9 @@ namespace TuneSDK
         [Export ("tuneEnqueuedActionWithReferenceId:")]
         void TuneEnqueuedAction (string referenceId);
 
+        [Export ("tuneEnqueuedRequest:postData:")]
+        void TuneEnqueuedRequestWithPostData (string requestUrl, string postData);
+
         [Export ("tuneDidReceiveDeeplink:")]
         void TuneDidReceiveDeeplink (string deeplink);
 
@@ -283,6 +314,7 @@ namespace TuneSDK
     }
 
     [BaseType (typeof (NSObject))]
+    [Protocol]
     public interface TuneEventItem {
 
         [Export ("item", ArgumentSemantic.Copy)]
@@ -344,6 +376,7 @@ namespace TuneSDK
     }
 
     [BaseType (typeof (NSObject))]
+    [Protocol]
     public interface TuneEvent {
 
         [Export ("eventName", ArgumentSemantic.Copy)]
@@ -438,6 +471,7 @@ namespace TuneSDK
     }
 
     [BaseType (typeof (NSObject))]
+    [Protocol]
     public interface TuneLocation {
         [Export ("altitude")]
         NSNumber Altitude { get; set; }

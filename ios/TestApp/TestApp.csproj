@@ -57,7 +57,7 @@
     </IpaPackageName>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchExtraArgs>-gcc_flags "-ObjC -lz"</MtouchExtraArgs>
-    <CodesignProvision>278d9e18-5901-4269-b81c-9fe67626e196</CodesignProvision>
+    <CodesignProvision>28e9a2f0-0783-4a00-a9e6-01388eb9ea69</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -125,11 +125,11 @@
     <InterfaceDefinition Include="TuneTestViewController_iPad.xib" />
     <InterfaceDefinition Include="TuneTestViewController_iPhone.xib" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Tune.Xamarin.iOS\Tune.Xamarin.iOS.csproj">
       <Project>{0B3A75B4-25A4-4108-9A90-DB1FF3D5E106}</Project>
       <Name>Tune.Xamarin.iOS</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

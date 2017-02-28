@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.OS;
 using Android.Runtime;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using Com.Tune.MA.Model;
 namespace TestApp
 {
     [Application]
-    public class MainApplication : TuneApplication
+    public class MainApplication : Application
     {
         const String TUNE_ADVERTISER_ID = "877";
         const String TUNE_CONVERSION_KEY = "8c14d6bbe466b65211e781d62e301eec";
@@ -28,6 +29,10 @@ namespace TestApp
         {
             base.OnCreate();
             //app init ...
+
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.IceCreamSandwich) {
+                RegisterActivityLifecycleCallbacks (new TuneActivityLifecycleCallbacks ());
+            }
 
             tuneConfig = new TuneConfiguration ();
             tuneConfig.SetDebugLoggingOn (true);
