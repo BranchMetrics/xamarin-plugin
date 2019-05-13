@@ -109,33 +109,6 @@ namespace TuneSDK
         [Static, Export ("setUserId:")]
         void SetUserId (string userId);
 
-        [Static, Export ("setUserEmail:")]
-        void SetUserEmail (string userEmail);
-
-        [Static, Export ("setUserName:")]
-        void SetUserName (string userName);
-
-        [Static, Export ("setPhoneNumber:")]
-        void SetPhoneNumber (string phoneNumber);
-
-        [Static, Export ("setFacebookUserId:")]
-        void SetFacebookUserId (string facebookUserId);
-
-        [Static, Export ("setTwitterUserId:")]
-        void SetTwitterUserId (string twitterUserId);
-
-        [Static, Export ("setGoogleUserId:")]
-        void SetGoogleUserId (string googleUserId);
-
-        [Static, Export ("setAge:")]
-        void SetAge(int age);
-
-        [Static, Export ("setGender:")]
-        void SetGender (int gender);
-
-        [Static, Export ("setLocation:")]
-        void SetLocation (TuneLocation location);
-
         [Static, Export ("setAppAdMeasurement:")]
         void SetAppAdMeasurement (bool enable);
 

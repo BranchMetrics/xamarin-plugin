@@ -163,20 +163,12 @@ namespace TestApp
 
                 Tune.SetTRUSTeId("tempTrusteTPID");
                 Tune.SetUserId("tempUserId");
-                Tune.SetUserEmail("temp@temp.com");
-                Tune.SetUserName("tempUserName");
-                Tune.SetPhoneNumber("123-456-7890");
                 Tune.SetCurrencyCode("GBP");
-                Tune.SetGender(1);
                 Tune.SetUseCookieMeasurement(false);
                 Tune.SetAppAdMeasurement(true);
-                Tune.SetAge(23);
                 Tune.SetJailbroken(false);
                 Tune.SetAppleAdvertisingIdentifier(ASIdentifierManager.SharedManager.AdvertisingIdentifier, ASIdentifierManager.SharedManager.IsAdvertisingTrackingEnabled);
                 Tune.SetAppleVendorIdentifier(UIDevice.CurrentDevice.IdentifierForVendor);
-                Tune.SetFacebookUserId("tempFacebookId");
-                Tune.SetGoogleUserId("tempGoogleId");
-                Tune.SetTwitterUserId("tempTwitterId");
 
                 Tune.SetExistingUser(false);
                 Tune.SetPayingUser(false);

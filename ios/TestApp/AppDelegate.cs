@@ -71,10 +71,6 @@ namespace TestApp
 
             Console.WriteLine("TUNE SDK Started : adv id = {0}, conv key = {1}, package name = {2}", TUNE_ADVERTISER_ID, TUNE_CONVERSION_KEY, TUNE_PACKAGE_NAME);
 
-            TuneLocation sampleLocation = new TuneLocation ();
-            sampleLocation.SetLatitude (95.5);
-            sampleLocation.SetLongitude (123.4);
-            Tune.SetLocation (sampleLocation);
             if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
                 var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
                     UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
