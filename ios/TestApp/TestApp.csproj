@@ -51,13 +51,12 @@
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <MtouchArch>ARMv7</MtouchArch>
+    <CodesignKey>iPhone Developer: car3man@gmail.com (UQGG9B43V8)</CodesignKey>
+    <MtouchArch>ARM64</MtouchArch>
     <IpaPackageName>
     </IpaPackageName>
-    <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchExtraArgs>-gcc_flags "-ObjC -lz"</MtouchExtraArgs>
-    <CodesignProvision>28e9a2f0-0783-4a00-a9e6-01388eb9ea69</CodesignProvision>
+    <MtouchExtraArgs>-gcc_flags "-ObjC -lz" </MtouchExtraArgs>
+    <CodesignProvision>iOS Team Provisioning Profile: com.car3man.xamtunetest</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -104,6 +103,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Xamarin.UITest">
+      <HintPath>..\packages\Xamarin.UITest.3.0.0-dev23\lib\portable-net45+win8+wp8\Xamarin.UITest.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -112,6 +114,7 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
