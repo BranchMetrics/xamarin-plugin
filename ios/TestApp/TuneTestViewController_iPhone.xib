@@ -14,7 +14,6 @@
                 <outlet property="btnGetterMethods" destination="dyh-CJ-C2h" id="u0S-bl-QtZ"/>
                 <outlet property="btnSession" destination="z2I-11-bkC" id="p9G-b4-mq1"/>
                 <outlet property="btnSetterMethods" destination="m3a-di-qOQ" id="N9c-dI-xgi"/>
-                <outlet property="btnStart" destination="cnE-tg-jaa" id="Ast-EV-StD"/>
                 <outlet property="view" destination="6" id="7"/>
             </connections>
         </placeholder>
@@ -79,13 +78,6 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cnE-tg-jaa">
-                    <rect key="frame" x="45" y="70" width="230" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Start TUNE">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TUNE Xamarin Test App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YRp-WK-K5T">
                     <rect key="frame" x="45" y="41" width="230" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -101,6 +93,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination" type="retina5_5.fullscreen"/>
     </simulatedMetricsContainer>
 </document>

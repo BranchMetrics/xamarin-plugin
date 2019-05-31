@@ -36,18 +36,16 @@ namespace TestApp
         {
             base.ViewDidLoad ();
 
-            btnStart.TouchUpInside += delegate {
-                Console.WriteLine("PowerHook Value is {0}", Tune.GetValueForHookById("hookId"));
-            };
-
             btnDelegate.TouchUpInside += delegate {
                 Console.WriteLine("tuneDelegate = " + tuneDelegate);
-                Tune.SetDelegate(tuneDelegate);
-                Tune.CheckForDeferredDeeplink(tuneDelegate);
+                Tune.RegisterDeeplinkListener(tuneDelegate);
             };
 
             btnDebug.TouchUpInside += delegate {
-                Tune.SetDebugMode(true);
+                Tune.SetDebugLogVerbose (true);
+                Tune.SetDebugLogCallBack ((message) => {
+                    Console.WriteLine (message);
+                });
             };
 
             btnSession.TouchUpInside += delegate {
@@ -64,10 +62,7 @@ namespace TestApp
                 evt = TuneEvent.EventWithName("eventAction3");
                 evt.RefId = "ref2";
                 evt.Revenue = 1.99f;
-                evt.CurrencyCode = "GBP";
                 Tune.MeasureEvent(evt);
-
-                Tune.MeasureEventId(932851438);
 
                 evt = TuneEvent.EventWithId(932851438);
                 evt.RefId = "ref3";
@@ -161,26 +156,17 @@ namespace TestApp
 
                 Console.WriteLine("TUNE setter methods");
 
-                Tune.SetTRUSTeId("tempTrusteTPID");
                 Tune.SetUserId("tempUserId");
-                Tune.SetCurrencyCode("GBP");
-                Tune.SetUseCookieMeasurement(false);
-                Tune.SetAppAdMeasurement(true);
                 Tune.SetJailbroken(false);
-                Tune.SetAppleAdvertisingIdentifier(ASIdentifierManager.SharedManager.AdvertisingIdentifier, ASIdentifierManager.SharedManager.IsAdvertisingTrackingEnabled);
-                Tune.SetAppleVendorIdentifier(UIDevice.CurrentDevice.IdentifierForVendor);
 
                 Tune.SetExistingUser(false);
                 Tune.SetPayingUser(false);
             };
 
             btnGetterMethods.TouchUpInside += delegate {
-
                 Console.WriteLine("MatId        = " + Tune.TuneId);
                 Console.WriteLine("OpenLogId    = " + Tune.OpenLogId);
                 Console.WriteLine("IsPayingUser = " + Tune.IsPayingUser);
-                Console.WriteLine ("IsUserInSegmentId = " + Tune.IsUserInSegmentId("58af05ce00312de4af000003"));
-                Console.WriteLine ("IsUserInAnySegmentIds = " + Tune.IsUserInAnySegmentIds(new string [] { "58af05f100312de4af000007", "58af05ce00312de4af000003" }));
             };
         }
 
@@ -192,21 +178,6 @@ namespace TestApp
 
     public class TestTuneDelegate : TuneDelegate
     {
-        public override void TuneDidSucceed (NSData data)
-        {
-            Console.WriteLine ("TUNE DidSucceed: " + NSString.FromData(data, NSStringEncoding.UTF8));
-        }
-
-        public override void TuneDidFail (NSError error)
-        {
-            Console.WriteLine ("TUNE DidFail: error = " + error.Code + ", " + error.LocalizedDescription);
-        }
-
-        public override void TuneEnqueuedAction (string referenceId)
-        {
-            Console.WriteLine ("TUNE EnqueuedAction: advertiserRefId = " + referenceId);
-        }
-
         public override void TuneDidReceiveDeeplink (string deeplink)
         {
             Console.WriteLine ("TUNE DidReceiveDeeplink: deeplink = " + deeplink);
@@ -215,11 +186,6 @@ namespace TestApp
         public override void TuneDidFailDeeplinkWithError (NSError error)
         {
             Console.WriteLine ("TUNE DidFailDeeplinkWithError: error = " + error.Code + ", " + error.LocalizedDescription);
-        }
-
-        public override void TuneEnqueuedRequestWithPostData (string requestUrl, string postData)
-        {
-            Console.WriteLine ("TUNE TuneEnqueuedRequestWithPostData: requestUrl= " + requestUrl + " and postData=" + postData);
         }
     }
 }

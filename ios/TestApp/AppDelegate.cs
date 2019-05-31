@@ -36,40 +36,11 @@ namespace TestApp
             window.RootViewController = viewController;
             window.MakeKeyAndVisible ();
 
-            NSMutableDictionary config = new NSMutableDictionary ();
-            config.Add(new NSString("debug_logging_on"), new NSNumber(true));
-            config.Add(new NSString("echo_analytics"), new NSNumber(true));
-
-            Tune.InitTracker (TUNE_ADVERTISER_ID, TUNE_CONVERSION_KEY, TUNE_PACKAGE_NAME, false, config);
-            //Tune.InitTracker(TUNE_ADVERTISER_ID, TUNE_CONVERSION_KEY);
-            Tune.SetPackageName(TUNE_PACKAGE_NAME);
-            Tune.SetAppleAdvertisingIdentifier(ASIdentifierManager.SharedManager.AdvertisingIdentifier, ASIdentifierManager.SharedManager.IsAdvertisingTrackingEnabled);
+            Tune.InitTracker(TUNE_ADVERTISER_ID, TUNE_CONVERSION_KEY);
             Tune.AutomateIapEventMeasurement(true);
             Tune.SetFacebookEventLogging(true, false);
 
-            Tune.RegisterHookWithId("hookId", "friendlyName", "defaultValue");
-
-            NSMutableDictionary defaultData = new NSMutableDictionary ();
-            defaultData.Add (new NSString("dialogMessage"), new NSString("My Dialog Message"));
-            Tune.RegisterDeepActionWithId("myDialogAction", "Show Dialog", defaultData, new DeepAction((NSDictionary extraData) => {
-                UIAlertView alert = new UIAlertView () { 
-                    Title = "Alert", Message = (extraData.ObjectForKey(new NSString("dialogMessage")).ToString())
-                };
-                alert.AddButton("OK");
-                alert.Show ();
-            }));
-
-            Tune.OnFirstPlaylistDownloaded (new TuneCallback (() => {
-                Console.WriteLine ("First Playlist Downloaded");
-                Console.WriteLine ("Tune In-App Message Experiment Details {0}", Tune.GetInAppMessageExperimentDetails ());
-                Console.WriteLine ("Tune Power Hook Experiment Details {0}", Tune.GetPowerHookVariableExperimentDetails ());
-            }));
-
-            Tune.OnPowerHooksChanged (new TuneCallback (() => {
-                Console.WriteLine ("Power Hooks Changed");
-            }));
-
-            Console.WriteLine("TUNE SDK Started : adv id = {0}, conv key = {1}, package name = {2}", TUNE_ADVERTISER_ID, TUNE_CONVERSION_KEY, TUNE_PACKAGE_NAME);
+            Console.WriteLine("TUNE SDK Started : adv id = {0}, conv key = {1}", TUNE_ADVERTISER_ID, TUNE_CONVERSION_KEY);
 
             if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
                 var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
