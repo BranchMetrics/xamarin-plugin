@@ -9,3 +9,4 @@ INTERNAL_README.md
 .DS_Store
 .vs
 ios/TestApp/packages
+android/packages
