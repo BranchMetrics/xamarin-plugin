@@ -1,4 +1,6 @@
-# Tune Xamarin Plugins
+# Legacy Tune Xamarin Plugins
+
+[Get the Branch Xamarin SDK here!](https://github.com/BranchMetrics/xamarin-branch-deep-linking-attribution)
 
 Please see the Quick Start guide here:
 
