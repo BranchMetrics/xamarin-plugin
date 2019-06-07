@@ -7,4 +7,4 @@
 
 using ObjCRuntime;
 
-[assembly: LinkWith ("Tune-6.1.0.a", SmartLink = true, ForceLoad = true)]
+[assembly: LinkWith ("Tune-6.1.0.a", SmartLink = true, ForceLoad = false, Frameworks="AdSupport, CoreSpotlight, CoreTelephony, iAd, MobileCoreServices, QuartzCore, Security, StoreKit, SystemConfiguration", LinkerFlags="-ObjC -lz")]
