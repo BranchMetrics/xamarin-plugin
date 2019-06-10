@@ -2,18 +2,18 @@
 <package >
   <metadata>
     <id>Tune.Xamarin.Android</id>
-    <version>5.0.0</version>
-    <authors>johng</authors>
-    <owners>TUNE</owners>
+    <version>6.0.0</version>
+    <authors>Branch Metrics, Inc</authors>
+    <owners>Branch Metrics, Inc</owners>
     <licenseUrl>https://github.com/MobileAppTracking/xamarin-plugin/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/MobileAppTracking/xamarin-plugin</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>The TUNE SDK for Xamarin.Android provides application session and event logging functionality. This SDK is available in the form of a single .DLL file that you simply include in your project.</description>
-    <releaseNotes>Updated for Android SDK 4.0.1.</releaseNotes>
-    <copyright>Copyright 2015 TUNE, Inc.</copyright>
+    <description>The Legacy TUNE SDK for Xamarin.Android provides application session and event logging functionality. This SDK is available in the form of a single .DLL file that you simply include in your project.</description>
+    <releaseNotes>Updated for Android SDK 6.1.1.</releaseNotes>
+    <copyright>Copyright 2019 Branch Metrics, Inc.</copyright>
     <tags>attribution analytics mobileapptracking mat tune</tags>
   </metadata>
   <files>
-    <file src="/bin/Release/Tune.Xamarin.Android.dll" target="lib/MonoAndroid/Tune.Xamarin.Android.dll" />
+    <file src="bin/Release/Tune.Xamarin.Android.dll" target="lib/MonoAndroid/Tune.Xamarin.Android.dll" />
   </files>
 </package>
