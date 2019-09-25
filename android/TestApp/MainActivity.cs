@@ -94,23 +94,9 @@ namespace TestApp {
                 Log.Info(TAG, "Test Setters");
 
                 tune.UserId = "user123";
-                tune.Age = 23;
                 tune.ExistingUser = false;
-                tune.UserEmail = "temp@temp.com";
-                tune.UserName = "tempUserName";
 
-                tune.FacebookUserId = "tempFacebookId";
-                tune.GoogleUserId = "tempGoogleId";
-                tune.TwitterUserId = "tempTwitterId";
-
-                String tuneData = "\nPackageName = " + tune.PackageName
-                    + "\nUserId = " + tune.UserId
-                    + "\nAdvertiserId = " + tune.AdvertiserId
-                    + "\nGender = " + tune.Gender
-                    + "\nAge = " + tune.Age;
-
-                Log.Info(TAG, "TUNE Data: " + tuneData);
-            };
+                };
             layout.AddView(aButton);
 
             aButton = new Button(this);

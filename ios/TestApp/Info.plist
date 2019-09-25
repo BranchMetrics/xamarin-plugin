@@ -5,7 +5,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>11.0</string>
+	<string>10.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -30,10 +30,10 @@
 		<string>remote-notification</string>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>6.1.1</string>
-	<key>CFBundleVersion</key>
-	<string>6.1.1</string>
+	<string>6.1.0</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.hasoffers.xamarinsample</string>
+	<key>CFBundleVersion</key>
+	<string>6.1.0</string>
 </dict>
 </plist>
