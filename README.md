@@ -6,7 +6,7 @@ Please see the Quick Start guide here:
 
 [Xamarin Quick Start](https://developers.tune.com/sdk/xamarin-quick-start/#code-platform-xamarin)
 
-Includes Tune iOS SDK 6.1.0 and Tune Android SDK 6.1.1
+Includes Tune iOS SDK 6.2.0 and Tune Android SDK 6.1.2
 
 ## Developers
 

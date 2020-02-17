@@ -2,15 +2,15 @@
 <package >
   <metadata>
     <id>Tune.Xamarin.iOS</id>
-    <version>6.0.0</version>
+    <version>6.1.0</version>
     <authors>Branch Metrics, Inc</authors>
     <owners>Branch Metrics, Inc</owners>
     <licenseUrl>https://github.com/TuneOSS/xamarin-plugin/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/TuneOSS/xamarin-plugin</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The Legacy TUNE SDK for Xamarin.iOS provides application session and event logging functionality. This SDK is available in the form of a single .DLL file that you simply include in your project.</description>
-    <releaseNotes>Updated for iOS SDK 6.1.0</releaseNotes>
-    <copyright>Copyright 2019 Branch Metrics, Inc.</copyright>
+    <releaseNotes>Updated for iOS SDK 6.2.0</releaseNotes>
+    <copyright>Copyright 2020 Branch Metrics, Inc.</copyright>
     <tags>attribution analytics mobileapptracking mat tune</tags>
   </metadata>
   <files>
