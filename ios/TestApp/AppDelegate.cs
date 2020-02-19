@@ -14,9 +14,9 @@ namespace TestApp
     [Register ("AppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
     {
-        private const string TUNE_ADVERTISER_ID = "877";
-        private const string TUNE_CONVERSION_KEY = "8c14d6bbe466b65211e781d62e301eec";
-        private const string TUNE_PACKAGE_NAME = "com.hasoffers.xamarinsample";
+        private const string TUNE_ADVERTISER_ID = "190163";
+        private const string TUNE_CONVERSION_KEY = "198dacaee0fd940d83ad259a27ec6fd5";
+        private const string TUNE_PACKAGE_NAME = "com.tune.sample.tunesampler";
 
         // class-level declarations
         UIWindow window;
@@ -36,9 +36,14 @@ namespace TestApp
             window.RootViewController = viewController;
             window.MakeKeyAndVisible ();
 
-            Tune.InitTracker(TUNE_ADVERTISER_ID, TUNE_CONVERSION_KEY);
-            Tune.AutomateIapEventMeasurement(true);
-            Tune.SetFacebookEventLogging(true, false);
+            Tune.SetDebugLogVerbose (true);
+            Tune.SetDebugLogCallBack ((message) => {
+                Console.WriteLine (message);
+            });
+
+            Tune.InitTracker(TUNE_ADVERTISER_ID, TUNE_CONVERSION_KEY, TUNE_PACKAGE_NAME, false, new NSDictionary());
+            //Tune.AutomateIapEventMeasurement(true);
+            //Tune.SetFacebookEventLogging(true, false);
 
             Console.WriteLine("TUNE SDK Started : adv id = {0}, conv key = {1}", TUNE_ADVERTISER_ID, TUNE_CONVERSION_KEY);
 
@@ -55,6 +60,13 @@ namespace TestApp
             }
                 
             return true;
+        }
+
+        public override void OnActivated (UIApplication application)
+        {
+            // Restart any tasks that were paused (or not yet started) while the application was inactive. 
+            // If the application was previously in the background, optionally refresh the user interface.
+            Tune.MeasureSession ();
         }
 
         public override bool ContinueUserActivity (UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)

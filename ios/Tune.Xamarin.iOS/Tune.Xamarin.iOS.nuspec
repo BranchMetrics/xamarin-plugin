@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Tune.Xamarin.iOS</id>
-    <version>6.1.0</version>
+    <version>6.1.3</version>
     <authors>Branch Metrics, Inc</authors>
     <owners>Branch Metrics, Inc</owners>
     <licenseUrl>https://github.com/TuneOSS/xamarin-plugin/blob/master/LICENSE</licenseUrl>
